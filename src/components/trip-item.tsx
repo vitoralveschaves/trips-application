@@ -8,6 +8,7 @@ interface TripItemProps {
 }
 
 export const TripItem = ({ trip }: TripItemProps) => {
+
   return (
     <Link href={`/trips/${trip.id}`}>
       <div className="flex flex-col">

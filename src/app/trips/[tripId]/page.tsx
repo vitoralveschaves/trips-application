@@ -6,22 +6,25 @@ import { TripHighLights } from "./components/trip-highlights";
 
 interface TripDetailsProps {
   params: {
-    tridId: string;
+    tripId: string;
   }
 }
 
 const getTripsDetails = async (tripId: string) => {
-  const trip = await prisma.trip.findFirst({
+  const tripDetails = await prisma.trip.findUnique({
     where: {
       id: tripId
     }
   })
 
-  return trip;
+  return tripDetails;
 }
 
 const TripDetails = async ({ params }: TripDetailsProps) => {
-  const trip = await getTripsDetails(params.tridId);
+
+  console.log("Opa", params.tripId)
+
+  const trip = await getTripsDetails(params.tripId);
 
   if (!trip) return null;
 
