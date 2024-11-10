@@ -12,7 +12,7 @@ export const TripItem = ({ trip }: TripItemProps) => {
   return (
     <Link href={`/trips/${trip.id}`}>
       <div className="flex flex-col">
-        <div className="relative h-[280px] w-[280px]">
+        <div className="relative h-[280px] w-[300px]">
           <Image src={trip.coverImage} fill alt={trip.name} className="rounded-lg shadow-md" style={{ objectFit: 'cover' }} />
         </div>
         <h3 className="text-primaryDarker font-medium text-sm mt-2">{trip.name}</h3>

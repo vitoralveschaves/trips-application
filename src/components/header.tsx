@@ -32,7 +32,7 @@ export const Header = () => {
           <Image height={32} width={32} src={data.user.image!} alt={data.user.name!} className="rounded-full shadow-md" />
 
           {menuIsOpen &&
-            <div className="absolute top-14 left-0 w-full h-full bg-white rounded-md shadow-md flex flex-col justify-center items-center">
+            <div className="absolute top-14 left-0 w-full h-full bg-white rounded-md shadow-md flex flex-col justify-center items-center z-10">
               <button className="text-primary text-sm font-semibold" onClick={handleLogoutClick}>
                 Logout
               </button>
