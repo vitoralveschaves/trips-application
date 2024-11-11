@@ -35,8 +35,14 @@ export const Header = () => {
           <Image height={32} width={32} src={data.user.image!} alt={data.user.name!} className="rounded-full shadow-md" />
 
           {menuIsOpen &&
-            <div className="absolute top-14 left-0 w-full h-full bg-white rounded-md shadow-md flex flex-col justify-center items-center z-10">
-              <button className="text-primary text-sm font-semibold" onClick={handleLogoutClick}>
+            <div className="absolute top-14 left-0 w-full h-[100px] bg-white rounded-md shadow-md flex flex-col justify-center items-center z-10 gap-2 p-1">
+              <Link href={"/my-trips"}>
+                <button className="text-primary text-sm font-medium" onClick={handleLogoutClick}>
+                  Minhas reservas
+                </button>
+              </Link>
+              <div className="border border-grayLighter h-[1px] w-full"></div>
+              <button className="text-primary text-sm font-medium" onClick={handleLogoutClick}>
                 Logout
               </button>
             </div>
