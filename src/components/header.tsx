@@ -37,7 +37,7 @@ export const Header = () => {
           {menuIsOpen &&
             <div className="absolute top-14 left-0 w-full h-[100px] bg-white rounded-md shadow-md flex flex-col justify-center items-center z-10 gap-2 p-1">
               <Link href={"/my-trips"}>
-                <button className="text-primary text-sm font-medium" onClick={handleLogoutClick}>
+                <button className="text-primary text-sm font-medium">
                   Minhas reservas
                 </button>
               </Link>
