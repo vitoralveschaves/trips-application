@@ -42,7 +42,7 @@ export const TripReservation = ({ tripId, tripStartDate, tripEndDate, maxGuests,
         message: 'Esta data já está reservada.'
       });
 
-      setError('endDate', {
+      return setError('endDate', {
         type: 'manual',
         message: 'Esta data já está reservada.'
       });
@@ -108,11 +108,12 @@ export const TripReservation = ({ tripId, tripStartDate, tripEndDate, maxGuests,
         />
       </div>
       <Input
-        {...register("guests", { required: { value: true, message: 'Número de hóspedes é obrigatório.' } })}
+        {...register("guests", { required: { value: true, message: 'Número de hóspedes é obrigatório.' }, max: { value: maxGuests, message: `O número de hospedes não deve ser maior que ${maxGuests}.` } })}
         placeholder={`Número de hóspedes (máx: ${maxGuests})`}
         className="mt-4"
         error={!!errors.guests}
         errorMessage={errors.guests?.message}
+        type="number"
       />
       <div className="flex justify-between my-3">
         <p className="font-medium text-sm text-primaryDarker">Total: </p>
