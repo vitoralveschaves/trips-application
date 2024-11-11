@@ -33,9 +33,14 @@ const TripConfirmation = ({ params }: TripConfirmationProps) => {
           endDate: searchParams.get("endDate"),
         }),
       });
-      const { trip, totalPrice } = await response.json();
-      setTrip(trip);
-      setPrice(totalPrice)
+      const res = await response.json();
+
+      if (res?.error) {
+        return router.push("/")
+      }
+
+      setTrip(res.trip);
+      setPrice(res.totalPrice)
     };
 
     if (status === "unauthenticated") {
@@ -43,7 +48,7 @@ const TripConfirmation = ({ params }: TripConfirmationProps) => {
     }
 
     fetchTrip();
-  }, [status])
+  }, [status, searchParams, params, router])
 
   const startDate = new Date(searchParams.get("startDate") as string);
   const endDate = new Date(searchParams.get("endDate") as string);
