@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import ReactCountryFlag from "react-country-flag";
 import ptBR from 'date-fns/locale/pt-BR'
 import Button from "@/components/button";
+import { useSession } from "next-auth/react";
 
 interface TripConfirmationProps {
   params: {
@@ -20,6 +21,7 @@ const TripConfirmation = ({ params }: TripConfirmationProps) => {
   const [price, setPrice] = useState<Number>(0);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { status } = useSession()
 
   useEffect(() => {
     const fetchTrip = async () => {
@@ -35,8 +37,13 @@ const TripConfirmation = ({ params }: TripConfirmationProps) => {
       setTrip(trip);
       setPrice(totalPrice)
     };
+
+    if (status === "unauthenticated") {
+      router.push("/")
+    }
+
     fetchTrip();
-  }, [])
+  }, [status])
 
   const startDate = new Date(searchParams.get("startDate") as string);
   const endDate = new Date(searchParams.get("endDate") as string);
