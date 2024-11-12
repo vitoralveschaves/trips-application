@@ -17,7 +17,6 @@ interface UserReservationItemProps {
 export const UserReservationItem = ({ reservation, fetchReservations }: UserReservationItemProps) => {
 
   const { trip } = reservation;
-  const router = useRouter();
 
   const handleDeleteClick = async () => {
     const res = await fetch(`/api/trips/reservation/${reservation.id}`, {
