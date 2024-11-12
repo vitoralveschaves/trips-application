@@ -30,11 +30,17 @@ const TripDetails = async ({ params }: TripDetailsProps) => {
   if (!trip) return null;
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto lg:pt-10">
       <TripHeader trip={trip} />
-      <TripReservation tripId={trip.id} tripStartDate={trip.startDate} tripEndDate={trip.endDate} maxGuests={trip.maxGuests} pricePerDay={trip.pricePerDay as any} />
-      <TripDescription description={trip.description} />
-      <TripHighLights highLights={trip.highlights} />
+      <div className="flex flex-col lg:flex-row mt-12 lg:gap-20">
+        <div className="lg:order-2">
+          <TripReservation tripId={trip.id} tripStartDate={trip.startDate} tripEndDate={trip.endDate} maxGuests={trip.maxGuests} pricePerDay={trip.pricePerDay as any} />
+        </div>
+        <div className="lg:order-1">
+          <TripDescription description={trip.description} />
+          <TripHighLights highLights={trip.highlights} />
+        </div>
+      </div>
       <TripLocation location={trip.location} />
     </div>
   )
